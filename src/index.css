@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import "tailwindcss";
+
+html {
+  scroll-behavior: auto; /* We handle scrolling ourselves via rAF — native smooth would fight our engine */
+  scroll-padding-top: 80px;
+  overscroll-behavior: none; /* prevent bounce / elastic over-scroll fighting our momentum */
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch; /* GPU-accelerated momentum on iOS */
+}
+
+/* Respect user's reduced-motion preference — re-enable native smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* GPU layer promotion for fixed and animated elements */
+.fixed,
+[style*="transform"],
+[style*="will-change"] {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@layer utilities {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: none;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Smooth automatic marquee scroll for skill and category text */
+  @keyframes text-scroll-bounce {
+    0%, 20% {
+      transform: translateX(0);
+    }
+    48%, 72% {
+      transform: translateX(var(--marquee-distance, -30px));
+    }
+    95%, 100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-text-scroll {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    animation: text-scroll-bounce 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .animate-text-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* Responsive 16:9 Featured Image Wrapper & Contain */
+  .featured-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-image-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+}
+

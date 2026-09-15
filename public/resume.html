@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harini Donthireddy — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #121216;
+      color: #111827;
+      font-family: 'Times New Roman', Times, 'Crimson Pro', serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 12px 48px;
+    }
+
+    /* Top Action Bar */
+    .top-toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      width: 100%;
+      max-width: 820px;
+      background: rgba(24, 24, 28, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 8px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .toolbar-title {
+      color: #f3f4f6;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-title .badge {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e5e7eb;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background: #f3f4f6;
+    }
+
+    /* Resume Document Sheet */
+    .resume-sheet {
+      width: 100%;
+      max-width: 820px;
+      background: #ffffff;
+      color: #000000;
+      padding: 44px 50px 52px;
+      border-radius: 2px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      font-family: 'Times New Roman', Times, 'Nimbus Roman No9 L', serif;
+      font-size: 13.5px;
+      line-height: 1.42;
+    }
+
+    /* Header */
+    .resume-header {
+      margin-bottom: 12px;
+    }
+
+    .candidate-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .contact-row a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .contact-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    .resume-section {
+      margin-top: 14px;
+    }
+
+    .section-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #000000;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 2px;
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .section-title .section-link {
+      font-weight: 400;
+      font-size: 12.5px;
+      text-transform: none;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .section-title .section-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills Table */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5px;
+      font-size: 13px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 185px 1fr;
+      align-items: baseline;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .skill-content {
+      color: #111827;
+    }
+
+    /* Experience & Projects */
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13.5px;
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+
+    .entry-title-group {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .entry-links {
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .entry-links a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .entry-links a:hover {
+      text-decoration: underline;
+    }
+
+    .entry-date {
+      font-weight: 400;
+      color: #000000;
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 3px 0 6px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.42;
+      color: #111827;
+    }
+
+    .bullet-symbol {
+      margin-right: 8px;
+      font-size: 14px;
+      line-height: 1.2;
+      flex-shrink: 0;
+      color: #000000;
+    }
+
+    .tech-stack-line {
+      font-size: 12.5px;
+      margin-top: 3px;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+
+    .tech-stack-label {
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    /* Certifications & Education */
+    .simple-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .simple-entry .bold-part {
+      font-weight: 700;
+    }
+
+    .edu-block {
+      margin-bottom: 8px;
+    }
+
+    .edu-block:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Print styling: Exactly 1 page on Letter/A4 */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+
+      .top-toolbar {
+        display: none !important;
+      }
+
+      .resume-sheet {
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+      }
+
+      @page {
+        margin: 0.45in 0.5in;
+        size: letter portrait;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .resume-sheet {
+        padding: 24px 18px;
+        font-size: 12px;
+      }
+      .skill-row {
+        grid-template-columns: 1fr;
+        gap: 1px;
+        margin-bottom: 4px;
+      }
+      .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .entry-date {
+        margin-left: 0;
+        font-size: 11.5px;
+      }
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Controls -->
+  <header class="top-toolbar">
+    <div class="toolbar-title">
+      <span>Harini Donthireddy</span>
+      <span class="badge">Resume</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="toolbar-btn btn-secondary" onclick="window.print()" title="Print or save as PDF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Print</span>
+      </button>
+
+      <a class="toolbar-btn btn-primary" href="/Harini_Donthireddy_Resume.pdf" download="Harini_Donthireddy_Resume.pdf" title="Download PDF copy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Download PDF</span>
+      </a>
+
+      <a class="toolbar-btn btn-secondary" href="/" title="Return to portfolio">
+        <span>Portfolio</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Authentic 1:1 Resume Sheet -->
+  <main class="resume-sheet">
+    
+    <!-- Candidate Header -->
+    <header class="resume-header">
+      <h1 class="candidate-name">Harini Donthireddy</h1>
+      
+      <div class="contact-row">
+        <div>
+          LinkedIn: <a href="https://www.linkedin.com/in/harini-donthireddy" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/harini-donthireddy</a>
+        </div>
+        <div>
+          Email: <a href="mailto:donthireddyharini@gmail.com">donthireddyharini@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <div>
+          GitHub: <a href="https://github.com/donthireddyharini" target="_blank" rel="noopener noreferrer">https://github.com/donthireddyharini</a>
+        </div>
+        <div>
+          Mobile: +91 9390599084
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. SKILLS SUMMARY -->
+    <section class="resume-section">
+      <h2 class="section-title">SKILLS SUMMARY</h2>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <div class="skill-label">Languages:</div>
+          <div class="skill-content">C++, java, HTML5, CSS3</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Frameworks & Libraries:</div>
+          <div class="skill-content">NumPy, Pandas, Matplotlib, Node.js</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Databases:</div>
+          <div class="skill-content">My SQL, MongoDB</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Cloud / DevOps:</div>
+          <div class="skill-content">Vercel, Railway, Render</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Developer Tools:</div>
+          <div class="skill-content">Vs Code, Git, Github, Antigravity</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Core Subjects:</div>
+          <div class="skill-content">Computer Networks, Operating System, Data Structures & Algorithms, OOP</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Soft Skills:</div>
+          <div class="skill-content">Problem-Solving, Team Collaboration, Intellectual Curiosity</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">AI / LLMs:</div>
+          <div class="skill-content">Claude, ChatGPT, Gemini, Groq API</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INTERNSHIP -->
+    <section class="resume-section">
+      <h2 class="section-title">INTERNSHIP</h2>
+      
+      <div class="entry-header">
+        <div class="entry-title-group">
+          Software Engineering Intern — GND Solutions Pvt Limited
+          <span class="entry-links"> | <a href="https://www.linkedin.com/in/harini-donthireddy" target="_blank" rel="noopener noreferrer">Certificate</a></span>
+        </div>
+        <div class="entry-date">Nov 2024 – May 2025</div>
+      </div>
+
+      <ul class="bullet-list">
+        <li class="bullet-item">
+          <span class="bullet-symbol">•</span>
+          <span>Engineered software solutions using Java Script, applying core programming principles and structured problem-solving practices to strengthen development proficiency in real-world engineering workflows.</span>
+        </li>
+        <li class="bullet-item">
+          <span class="bullet-symbol">•</span>
+          <span>Developed and refined web application components with React.js, translating software requirements into modular, maintainable interfaces while building practical experience with modern frontend engineering.</span>
+        </li>
+        <li class="bullet-item">
+          <span class="bullet-symbol">•</span>
+          <span>Applied AWS concepts alongside JavaScript and React.js development, strengthening end-to-end understanding of cloud-enabled software engineering and preparing solutions for scalable application environments.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 3. PROJECTS -->
+    <section class="resume-section">
+      <h2 class="section-title">PROJECTS</h2>
+
+      <!-- Project 1: DSA Legends -->
+      <div>
+        <div class="entry-header">
+          <div class="entry-title-group">
+            DSA Legends – DSA Learning Game
+            <span class="entry-links">
+              | <a href="https://github.com/donthireddyharini" target="_blank" rel="noopener noreferrer">Github</a>
+              | <a href="https://github.com/donthireddyharini" target="_blank" rel="noopener noreferrer">Live</a>
+            </span>
+          </div>
+          <div class="entry-date">Jun 2026 – Jul 2026</div>
+        </div>
+
+        <ul class="bullet-list">
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Engineered a browser-based DSA learning game addressing the challenge of making algorithm concepts interactive, structuring 7 progressive worlds across Arrays, Linked Lists, Stacks, Queues, Trees, and Graphs with Roadmap → Missions → Boss → Quiz learning loops.</span>
+          </li>
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Implemented step-by-step Canvas visualizations alongside independently compiled Java reference implementations for core operations including searching, sorting, traversal, BFS, DFS, Dijkstra, postfix evaluation, and pointer-based linked-list operations, with the Java layer independently compiled and executed to validate algorithm behaviour.</span>
+          </li>
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Integrated gamification and persistent progress through timed boss battles, scenario-based quizzes, XP/coins, powers, ~24 achievements, leaderboard, learning journal, and browser local Storage, achieving a quiz threshold for world completion and deploying the zero-build application on Vercel.</span>
+          </li>
+        </ul>
+
+        <div class="tech-stack-line">
+          <span class="tech-stack-label">Tech Stack: </span>
+          <span>HTML, CSS, JavaScript, Java, HTML Canvas API, Web Audio API, Browser Local Storage, Vercel</span>
+        </div>
+      </div>
+
+      <!-- Project 2: LitMind -->
+      <div style="margin-top: 8px;">
+        <div class="entry-header">
+          <div class="entry-title-group">
+            LitMind – AI-Powered Literature Tutor
+            <span class="entry-links">
+              | <a href="https://github.com/donthireddyharini" target="_blank" rel="noopener noreferrer">Github</a>
+              | <a href="https://github.com/donthireddyharini" target="_blank" rel="noopener noreferrer">Live</a>
+            </span>
+          </div>
+          <div class="entry-date">Jan 2026 – May 2026</div>
+        </div>
+
+        <ul class="bullet-list">
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Engineered an AI literature tutor that analyses themes, symbolism, narrative techniques, poetry, and literary concepts through conversational, context-aware assistance powered by Llama models via Groq.</span>
+          </li>
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Built a full-stack conversational system with Node.js, Express.js, SQLite, and session management, supporting persistent chat histories, Google OAuth authentication, image-based, voice-based literary analysis, and multimodal AI interactions.</span>
+          </li>
+          <li class="bullet-item">
+            <span class="bullet-symbol">•</span>
+            <span>Integrated voice input, image uploads, Markdown-rendered responses, topic-driven prompts, and adaptive model selection, creating an interactive learning environment that extends beyond conventional text-only AI chatbots. and supports multiple modes of interaction.</span>
+          </li>
+        </ul>
+
+        <div class="tech-stack-line">
+          <span class="tech-stack-label">Tech Stack: </span>
+          <span>Node.js, Express.js, JavaScript, SQLite, Groq API, Llama 3.3, Passport.js, Render</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CERTIFICATIONS / CERTIFICATES -->
+    <section class="resume-section">
+      <h2 class="section-title">CERTIFICATIONS / CERTIFICATES</h2>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">Data Structures and Algorithms</span>
+          <span> | iamneo - NIT Venture</span>
+        </div>
+        <div class="entry-date">Jun 2026</div>
+      </div>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">Object Oriented Programming</span>
+          <span> | iamneo - NIT Venture</span>
+        </div>
+        <div class="entry-date">Jun 2026</div>
+      </div>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">Master Data Structure, Algorithms and Problem Solving</span>
+          <span> | Centre for Professional Enhancement</span>
+        </div>
+        <div class="entry-date">Jul 2026</div>
+      </div>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">Programming in java</span>
+          <span> | iamneo - NIT Venture</span>
+        </div>
+        <div class="entry-date">Oct 2026</div>
+      </div>
+    </section>
+
+    <!-- 5. ACHIEVEMENTS & EXTRACURRICULAR ACTIVITIES -->
+    <section class="resume-section">
+      <div class="section-title">
+        <span>ACHIEVEMENTS &amp; EXTRACURRICULAR ACTIVITIES</span>
+        <a href="https://www.linkedin.com/in/harini-donthireddy" target="_blank" rel="noopener noreferrer" class="section-link">Certificates</a>
+      </div>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">State Level Athletics Gold Medallist</span>
+          <span> —Secured 4+ Gold Medals at State Level in Athletics, competing in Running</span>
+        </div>
+        <div class="entry-date">Dec 2024 -Jan 2025</div>
+      </div>
+
+      <div class="simple-entry">
+        <div>
+          <span class="bold-part">AIU Athletics Participant, LPU</span>
+          <span> — Represented LPU in All India Inter-University athletics, competing at the university level.</span>
+        </div>
+        <div class="entry-date">Jan 2026</div>
+      </div>
+    </section>
+
+    <!-- 6. EDUCATION -->
+    <section class="resume-section">
+      <h2 class="section-title">EDUCATION</h2>
+
+      <div class="edu-block">
+        <div class="simple-entry">
+          <div class="bold-part">Lovely Professional University</div>
+          <div class="entry-date">Punjab, India</div>
+        </div>
+        <div class="simple-entry">
+          <div>Bachelor of Technology in Computer Science — CGPA: 7.95</div>
+          <div class="entry-date">Aug 2025 – Present</div>
+        </div>
+      </div>
+
+      <div class="edu-block">
+        <div class="simple-entry">
+          <div class="bold-part">Loyola Polytechnic College (Diploma)</div>
+          <div class="entry-date">Andhra Pradesh, India</div>
+        </div>
+        <div class="simple-entry">
+          <div>Diploma (Computer Science and Engineering) — CGPA: 8.81</div>
+          <div class="entry-date">Aug 2022 – May 2025</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "DH",
+  "description": "Cinematic portfolio showcasing engineering projects, experience, resume, and contact details with seamless background video.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
