@@ -37,7 +37,7 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
         >
           About Me
         </h2>
-        <p className="text-emerald-400 font-mono text-xs sm:text-sm tracking-wider uppercase">
+        <p className="text-emerald-400 font-mono text-sm sm:text-base tracking-wider uppercase">
           {PORTFOLIO_DATA.name} — {PORTFOLIO_DATA.title}
         </p>
 
@@ -49,11 +49,11 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
             href={PORTFOLIO_DATA.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="liquid-glass px-4 py-2.5 rounded-full text-xs font-medium text-white hover:text-white hover:bg-white/15 transition-all border border-white/15 flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
+            className="liquid-glass px-4 py-2.5 rounded-full text-xs font-medium text-white hover:text-white hover:bg-white/15 transition-all border border-white/20 bg-black/80 flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
           >
             <Linkedin size={15} className="text-[#0A66C2]" />
             <span>LinkedIn</span>
-            <ExternalLink size={12} className="opacity-60" />
+            <ExternalLink size={12} className="opacity-70" />
           </a>
 
           {/* GitHub Button */}
@@ -62,15 +62,15 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
             href={PORTFOLIO_DATA.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="liquid-glass px-4 py-2.5 rounded-full text-xs font-medium text-white hover:text-white hover:bg-white/15 transition-all border border-white/15 flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
+            className="liquid-glass px-4 py-2.5 rounded-full text-xs font-medium text-white hover:text-white hover:bg-white/15 transition-all border border-white/20 bg-black/80 flex items-center gap-2 cursor-pointer shadow-lg active:scale-95"
           >
             <Github size={15} className="text-white" />
             <span>GitHub</span>
-            <ExternalLink size={12} className="opacity-60" />
+            <ExternalLink size={12} className="opacity-70" />
           </a>
 
           {/* Email Button */}
-          <div className="inline-flex items-center rounded-full liquid-glass border border-white/15 p-0.5 shadow-lg">
+          <div className="inline-flex items-center rounded-full liquid-glass border border-white/20 bg-black/80 p-0.5 shadow-lg">
             <a
               id="about-btn-email"
               href={`mailto:${PORTFOLIO_DATA.email}`}
@@ -82,7 +82,7 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
             <button
               onClick={handleCopyEmail}
               title="Copy email address"
-              className="p-2 rounded-full hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer border-l border-white/10"
+              className="p-2 rounded-full hover:bg-white/15 text-white/80 hover:text-white transition-colors cursor-pointer border-l border-white/15"
               aria-label="Copy email"
             >
               {copiedEmail ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
@@ -108,69 +108,87 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
       {/* Structured Content Container: 1. Professional Summary, 2. Core Technologies, 3. Education */}
       <div className="space-y-8">
         {/* 1. Professional Summary */}
-        <div className="liquid-glass rounded-3xl p-6 sm:p-8 border border-white/15 bg-black/40 backdrop-blur-xl">
+        <div className="black-glass rounded-3xl p-6 sm:p-8 border border-white/15 bg-black/85 backdrop-blur-2xl shadow-2xl">
           <div className="flex items-center gap-2.5 mb-4 text-white pb-3 border-b border-white/10">
             <Sparkles size={18} className="text-emerald-400" />
             <h3
               style={{ fontFamily: "'Instrument Serif', serif" }}
-              className="text-2xl sm:text-3xl font-normal"
+              className="text-2xl sm:text-3xl font-normal text-white"
             >
               Professional Summary
             </h3>
           </div>
 
-          <div className="space-y-3.5 text-sm sm:text-base text-white/85 leading-relaxed font-normal">
+          <div className="space-y-4 text-base sm:text-lg text-zinc-100 leading-relaxed font-normal">
             <p>
               {PORTFOLIO_DATA.summary}
             </p>
           </div>
         </div>
 
-        {/* 2. Core Technologies */}
-        <div className="liquid-glass rounded-3xl p-6 sm:p-8 border border-white/15 bg-black/40 backdrop-blur-xl">
+        {/* 2. Core Technologies - Black Glass Background with High Contrast */}
+        <div className="black-glass rounded-3xl p-6 sm:p-8 border border-white/20 bg-black/90 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
+          {/* Subtle ambient black-glass radial highlights */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+
           <div className="flex items-center justify-between gap-2.5 mb-6 text-white pb-3 border-b border-white/10">
             <div className="flex items-center gap-2.5">
-              <Cpu size={18} className="text-emerald-400" />
+              <Cpu size={20} className="text-emerald-400" />
               <h3
                 style={{ fontFamily: "'Instrument Serif', serif" }}
-                className="text-2xl sm:text-3xl font-normal"
+                className="text-2xl sm:text-3xl font-normal text-white"
               >
-                Core Technologies & Skills
+                Core Technologies &amp; Skills
               </h3>
             </div>
-            <span className="text-xs font-mono text-emerald-400/80 hidden sm:inline-block bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/20">
+            <span className="text-xs sm:text-sm font-mono text-emerald-300 hidden sm:inline-block bg-emerald-950/70 px-3.5 py-1 rounded-full border border-emerald-500/30 font-medium">
               Interactive Symbols
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {PORTFOLIO_DATA.skills.map((skillGroup) => (
-              <div
-                key={skillGroup.category}
-                className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col justify-between hover:border-white/20 transition-all group"
-              >
-                <div>
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-emerald-300 mb-3.5 font-semibold">
-                    <span className="block truncate">{skillGroup.category}</span>
-                  </h4>
-                  <div className="flex flex-wrap gap-2 sm:gap-2.5 items-start">
-                    {skillGroup.items.map((item) => (
-                      <TechSymbolBadge key={item} itemName={item} />
-                    ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {PORTFOLIO_DATA.skills.map((skillGroup) => {
+              const isOdd = skillGroup.items.length % 2 !== 0;
+              return (
+                <div
+                  key={skillGroup.category}
+                  className="p-4 sm:p-5 rounded-2xl bg-[#090b10]/95 border border-white/15 flex flex-col justify-between hover:border-emerald-400/40 backdrop-blur-md shadow-xl transition-all group"
+                >
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-emerald-300 mb-4 font-bold flex items-center justify-between pb-2 border-b border-white/10">
+                      <span className="block truncate">{skillGroup.category}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/80" />
+                    </h4>
+                    <div className="grid grid-cols-2 gap-3 sm:gap-3.5 justify-items-center">
+                      {skillGroup.items.map((item, index) => {
+                        const isLastAndOdd = isOdd && index === skillGroup.items.length - 1;
+                        return (
+                          <div
+                            key={item}
+                            className={`w-full flex justify-center ${
+                              isLastAndOdd ? 'col-span-2' : ''
+                            }`}
+                          >
+                            <TechSymbolBadge itemName={item} />
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* 3. Education */}
-        <div className="liquid-glass rounded-3xl p-6 sm:p-8 border border-white/15 bg-black/40 backdrop-blur-xl">
+        <div className="black-glass rounded-3xl p-6 sm:p-8 border border-white/15 bg-black/85 backdrop-blur-2xl shadow-2xl">
           <div className="flex items-center gap-2.5 mb-5 text-white pb-3 border-b border-white/10">
-            <GraduationCap size={18} className="text-emerald-400" />
+            <GraduationCap size={20} className="text-emerald-400" />
             <h3
               style={{ fontFamily: "'Instrument Serif', serif" }}
-              className="text-2xl sm:text-3xl font-normal"
+              className="text-2xl sm:text-3xl font-normal text-white"
             >
               Education
             </h3>
@@ -178,20 +196,20 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {PORTFOLIO_DATA.educationList.map((edu, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-                <div className="flex flex-col justify-between gap-1">
+              <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-[#090b10]/90 border border-white/15 space-y-2.5 backdrop-blur-md shadow-lg">
+                <div className="flex flex-col justify-between gap-1.5">
                   <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-sm sm:text-base font-semibold text-white">
+                    <h4 className="text-base sm:text-lg font-semibold text-white">
                       {edu.degree}
                     </h4>
-                    <span className="text-xs font-mono text-emerald-300 px-2.5 py-0.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 shrink-0">
+                    <span className="text-xs sm:text-sm font-mono text-emerald-300 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 font-semibold shrink-0">
                       {edu.cgpa}
                     </span>
                   </div>
-                  <div className="text-xs text-white/70 font-medium">
+                  <div className="text-sm text-zinc-200 font-medium">
                     {edu.institution}
                   </div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-white/45 pt-2 border-t border-white/5">
+                  <div className="flex items-center justify-between text-xs font-mono text-zinc-300 pt-2 border-t border-white/10">
                     <span>{edu.location}</span>
                     <span>{edu.period}</span>
                   </div>

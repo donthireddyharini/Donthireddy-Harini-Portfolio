@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Linkedin, Github } from 'lucide-react';
 import { BackgroundVideo } from './components/BackgroundVideo';
 import { Navbar } from './components/Navbar';
@@ -12,10 +12,30 @@ import { CertificatesSection } from './components/CertificatesSection';
 import { ContactSection } from './components/ContactSection';
 import { SocialFooter } from './components/SocialFooter';
 import { LaunchAnimation } from './components/LaunchAnimation';
+import { ProjectDetailView } from './components/ProjectDetailView';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('hero-section');
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const [hasLaunched, setHasLaunched] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('portfolio_launched') === 'true';
+    }
+    return false;
+  });
+  const scrollPosBeforeProjectRef = useRef<number>(0);
+
+  const handleSelectProject = (projectId: string) => {
+    scrollPosBeforeProjectRef.current = window.scrollY;
+    setSelectedProjectId(projectId);
+  };
+
+  const handleBackToPortfolio = () => {
+    setSelectedProjectId(null);
+    setActiveSection('hero-section');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   // Activate premium momentum scroll engine
   useSmoothScroll();
@@ -71,10 +91,38 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // When a project is selected: ONLY display that single project!
+  // NO Navbar (home, about, projects...), NO other sections, NO other content!
+  if (selectedProjectId) {
+    return (
+      <main className="min-h-screen bg-black text-white relative flex flex-col justify-between select-none overflow-x-hidden">
+        {/* Fixed full-screen background image / video */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <BackgroundVideo />
+        </div>
+
+        {/* Dedicated Single Project View */}
+        <ProjectDetailView
+          projectId={selectedProjectId}
+          onBack={handleBackToPortfolio}
+        />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-black text-white relative flex flex-col justify-between select-none overflow-x-hidden">
-      {/* Unique Futuristic Launch Boot Animation */}
-      <LaunchAnimation />
+      {/* Unique Futuristic Launch Boot Animation - Only runs once on initial session visit */}
+      {!hasLaunched && (
+        <LaunchAnimation
+          onComplete={() => {
+            setHasLaunched(true);
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem('portfolio_launched', 'true');
+            }
+          }}
+        />
+      )}
 
       {/* Fixed full-screen background image */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -103,7 +151,7 @@ export default function App() {
 
       {/* 2. Visual Showcase Section (placed directly above About Me as requested) */}
       <div className="relative z-10">
-        <ShowcaseSection />
+        <ShowcaseSection onSelectProject={handleSelectProject} />
       </div>
 
       {/* 3. Scrolling Section: About with direct Resume link and visible celestial background */}
@@ -113,7 +161,7 @@ export default function App() {
 
       {/* 4. Scrolling Section: Projects */}
       <div className="relative z-10">
-        <PortfolioSection />
+        <PortfolioSection onSelectProject={handleSelectProject} />
       </div>
 
       {/* 5. Scrolling Section: Internship & Training */}
@@ -137,31 +185,31 @@ export default function App() {
       </div>
 
       {/* Clean Footer Bar with LinkedIn and GitHub Profile Links */}
-      <footer className="relative z-10 py-10 border-t border-white/10 text-center text-xs text-white/60 bg-black/40 backdrop-blur-sm font-mono flex flex-col items-center justify-center gap-4">
+      <footer className="relative z-10 py-10 border-t border-white/15 text-center text-sm text-zinc-200 bg-black/80 backdrop-blur-md font-mono flex flex-col items-center justify-center gap-4">
         <div className="flex items-center gap-3">
           <a
             href="https://www.linkedin.com/in/harini-donthireddy"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full liquid-glass border border-white/15 text-white/90 hover:text-white hover:border-white/30 hover:bg-white/10 text-xs transition-all active:scale-95 shadow-md group cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full black-glass border border-white/20 text-white hover:text-white hover:border-white/40 hover:bg-white/15 text-xs sm:text-sm transition-all active:scale-95 shadow-md group cursor-pointer bg-black/80"
             aria-label="LinkedIn Profile"
           >
-            <Linkedin size={15} className="text-[#0A66C2] group-hover:scale-110 transition-transform" />
-            <span className="font-medium">LinkedIn</span>
+            <Linkedin size={16} className="text-[#0A66C2] group-hover:scale-110 transition-transform" />
+            <span className="font-semibold text-white">LinkedIn</span>
           </a>
 
           <a
             href="https://github.com/donthireddyharini"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full liquid-glass border border-white/15 text-white/90 hover:text-white hover:border-white/30 hover:bg-white/10 text-xs transition-all active:scale-95 shadow-md group cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full black-glass border border-white/20 text-white hover:text-white hover:border-white/40 hover:bg-white/15 text-xs sm:text-sm transition-all active:scale-95 shadow-md group cursor-pointer bg-black/80"
             aria-label="GitHub Profile"
           >
-            <Github size={15} className="text-white group-hover:scale-110 transition-transform" />
-            <span className="font-medium">GitHub</span>
+            <Github size={16} className="text-white group-hover:scale-110 transition-transform" />
+            <span className="font-semibold text-white">GitHub</span>
           </a>
         </div>
-        <p>© {new Date().getFullYear()} Donthireddy Harini — All rights reserved.</p>
+        <p className="text-zinc-200 font-medium text-xs sm:text-sm">© {new Date().getFullYear()} Donthireddy Harini — All rights reserved.</p>
       </footer>
     </main>
   );

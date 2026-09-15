@@ -25,7 +25,7 @@ export const InternshipSection: React.FC = () => {
           Internship &amp; Training
         </h2>
 
-        <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           Real-world industry software engineering experience combined with advanced algorithmic problem-solving masterclasses.
         </p>
       </div>
@@ -34,11 +34,11 @@ export const InternshipSection: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         
         {/* CARD 1: INTERNSHIP */}
-        <article className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 bg-black/40 hover:bg-black/55 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full">
+        <article className="black-glass rounded-3xl p-6 sm:p-7 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-emerald-500/30 flex flex-col justify-between group shadow-2xl h-full">
           <div className="flex flex-col flex-1">
             
             {/* 16:9 Image Preview Container */}
-            <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 shrink-0 group/img flex items-center justify-center">
+            <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-5 shrink-0 group/img flex items-center justify-center">
               <img
                 src="/gnd-internship.jpg"
                 alt=""
@@ -51,17 +51,17 @@ export const InternshipSection: React.FC = () => {
                 loading="lazy"
                 className="featured-image-contain relative z-10 w-full h-full object-contain object-center block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
 
               {/* Badges on Image */}
               <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
-                <span className="text-[10px] font-mono text-emerald-300 font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-emerald-500/30 flex items-center gap-1">
-                  <Building2 size={11} />
+                <span className="text-xs font-mono text-emerald-300 font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-emerald-500/40 flex items-center gap-1">
+                  <Building2 size={12} />
                   INTERNSHIP
                 </span>
               </div>
               <div className="absolute top-3 right-3 z-20">
-                <span className="text-[10px] font-mono text-white/90 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20">
+                <span className="text-xs font-mono text-white font-medium px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/30">
                   GND Solutions
                 </span>
               </div>
@@ -69,43 +69,43 @@ export const InternshipSection: React.FC = () => {
 
             {/* Meta Row: Period & Role */}
             <div className="flex items-center justify-between gap-3 mb-3">
-              <span className="text-[11px] font-mono text-white/50 px-2 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                <Calendar size={11} className="text-emerald-400" />
+              <span className="text-xs font-mono text-zinc-200 px-2.5 py-0.5 rounded bg-black/70 border border-white/15 flex items-center gap-1 font-medium">
+                <Calendar size={12} className="text-emerald-400" />
                 Nov 2024 – May 2025
               </span>
-              <span className="text-[11px] font-mono text-emerald-400/90 tracking-wide uppercase">
+              <span className="text-xs font-mono text-emerald-300 font-semibold tracking-wide uppercase">
                 Certificate Verified
               </span>
             </div>
 
             {/* Title & Organization */}
-            <h3 className="text-xl sm:text-2xl font-medium text-white mb-2 flex items-center justify-between">
+            <h3 className="text-2xl sm:text-3xl font-medium text-white mb-2 flex items-center justify-between">
               <span className="text-white">Software Engineering Intern</span>
-              <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white/60 shrink-0" />
+              <ArrowUpRight size={20} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white/60 shrink-0" />
             </h3>
 
-            <p className="text-xs font-mono text-emerald-400/80 uppercase tracking-wider mb-4">
+            <p className="text-xs sm:text-sm font-mono text-emerald-400/90 uppercase tracking-wider mb-4 font-medium">
               GND Solutions Pvt Limited | Certificate
             </p>
 
             {/* Structured Bullet Points */}
-            <div className="space-y-2.5 mb-6 bg-white/[0.03] p-4 rounded-2xl border border-white/5 flex-1">
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+            <div className="space-y-3 mb-6 bg-[#090b10]/90 p-4 sm:p-5 rounded-2xl border border-white/12 shadow-inner flex-1">
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Engineered software solutions using JavaScript, applying core programming principles and structured problem-solving practices to strengthen development proficiency in real-world engineering workflows.
                 </span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Developed and refined web application components with React.js, translating software requirements into modular, maintainable interfaces while building practical experience with modern frontend engineering.
                 </span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Applied AWS concepts alongside JavaScript and React.js development, strengthening end-to-end understanding of cloud-enabled software engineering and preparing solutions for scalable application environments.
                 </span>
@@ -120,7 +120,7 @@ export const InternshipSection: React.FC = () => {
               {['JavaScript', 'React.js', 'AWS Concepts', 'Frontend Engineering', 'REST APIs', 'Cloud Workflows'].map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.06] text-white/80 border border-white/10"
+                  className="text-xs font-mono px-3 py-1 rounded-md bg-white/[0.08] text-white border border-white/15 font-medium"
                 >
                   {tech}
                 </span>
@@ -132,7 +132,7 @@ export const InternshipSection: React.FC = () => {
                 href="https://github.com/donthireddyharini/Event-Management-System.git"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white/90 hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/15 cursor-pointer"
+                className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/20 bg-black/80 cursor-pointer shadow-md"
               >
                 <Github size={14} />
                 <span>GitHub</span>
@@ -156,11 +156,11 @@ export const InternshipSection: React.FC = () => {
         </article>
 
         {/* CARD 2: TRAINING */}
-        <article className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 bg-black/40 hover:bg-black/55 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full">
+        <article className="black-glass rounded-3xl p-6 sm:p-7 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-emerald-500/30 flex flex-col justify-between group shadow-2xl h-full">
           <div className="flex flex-col flex-1">
             
             {/* 16:9 Image Preview Container */}
-            <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 shrink-0 group/img flex items-center justify-center">
+            <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-5 shrink-0 group/img flex items-center justify-center">
               <img
                 src="/dsa-training.png"
                 alt=""
@@ -173,17 +173,17 @@ export const InternshipSection: React.FC = () => {
                 loading="lazy"
                 className="featured-image-contain relative z-10 w-full h-full object-contain object-center block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
 
               {/* Badges on Image */}
               <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
-                <span className="text-[10px] font-mono text-emerald-300 font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-emerald-500/30 flex items-center gap-1">
+                <span className="text-[10px] font-mono text-emerald-300 font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-emerald-500/40 flex items-center gap-1">
                   <GraduationCap size={12} />
                   TRAINING
                 </span>
               </div>
               <div className="absolute top-3 right-3 z-20">
-                <span className="text-[10px] font-mono text-white/90 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20">
+                <span className="text-[10px] font-mono text-white font-medium px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/30">
                   LPU CPE
                 </span>
               </div>
@@ -191,43 +191,43 @@ export const InternshipSection: React.FC = () => {
 
             {/* Meta Row: Period & Role */}
             <div className="flex items-center justify-between gap-3 mb-3">
-              <span className="text-[11px] font-mono text-white/50 px-2 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                <Calendar size={11} className="text-emerald-400" />
+              <span className="text-xs font-mono text-zinc-200 px-2.5 py-0.5 rounded bg-black/70 border border-white/15 flex items-center gap-1 font-medium">
+                <Calendar size={12} className="text-emerald-400" />
                 Jun&apos;26 – Jul&apos;26
               </span>
-              <span className="text-[11px] font-mono text-emerald-400/90 tracking-wide uppercase">
+              <span className="text-xs font-mono text-emerald-300 font-semibold tracking-wide uppercase">
                 MasterClass
               </span>
             </div>
 
             {/* Title & Organization */}
-            <h3 className="text-xl sm:text-2xl font-medium text-white group-hover:text-emerald-300 transition-colors mb-2 flex items-center justify-between">
+            <h3 className="text-2xl sm:text-3xl font-medium text-white group-hover:text-emerald-300 transition-colors mb-2 flex items-center justify-between">
               <span>Data Structures, Algorithms &amp; Problem Solving MasterClass</span>
-              <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-emerald-400 shrink-0" />
+              <ArrowUpRight size={20} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-emerald-400 shrink-0" />
             </h3>
 
-            <p className="text-xs font-mono text-emerald-400/80 uppercase tracking-wider mb-4">
+            <p className="text-xs sm:text-sm font-mono text-emerald-400/90 uppercase tracking-wider mb-4 font-medium">
               Centre for Professional Enhancement (Lovely Professional University)
             </p>
 
             {/* Structured Bullet Points */}
-            <div className="space-y-2.5 mb-6 bg-white/[0.03] p-4 rounded-2xl border border-white/5 flex-1">
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+            <div className="space-y-3 mb-6 bg-[#090b10]/90 p-4 sm:p-5 rounded-2xl border border-white/12 shadow-inner flex-1">
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Strengthened understanding of Data Structures, Algorithms, and Problem-Solving techniques, focusing on efficient approaches to solving computational and programming challenges.
                 </span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Designed and built an interactive DSA Learning Game to make concepts such as arrays, linked lists, stacks, queues, trees, graphs, sorting, and searching easier to understand through interactive learning activities.
                 </span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-xs text-white/80 leading-relaxed">
-                <span className="text-emerald-400 font-mono mt-0.5">&bull;</span>
+              <div className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed font-normal">
+                <span className="text-emerald-400 font-mono mt-0.5 font-bold">&bull;</span>
                 <span>
                   Enhanced algorithmic thinking and problem-solving skills while creating an engaging learning platform that helps users understand and practice DSA Concepts interactively.
                 </span>
@@ -242,7 +242,7 @@ export const InternshipSection: React.FC = () => {
               {['Data Structures', 'Algorithms', 'Java', 'JavaScript', 'Canvas API', 'Problem Solving'].map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.06] text-white/80 border border-white/10"
+                  className="text-xs font-mono px-3 py-1 rounded-md bg-white/[0.08] text-white border border-white/15 font-medium"
                 >
                   {tech}
                 </span>
@@ -254,7 +254,7 @@ export const InternshipSection: React.FC = () => {
                 href="https://github.com/donthireddyharini/DSA-Learning-Game.git"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white/90 hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/15 cursor-pointer"
+                className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/20 bg-black/80 cursor-pointer shadow-md"
               >
                 <Github size={14} />
                 <span>GitHub</span>

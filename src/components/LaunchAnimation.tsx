@@ -6,14 +6,22 @@ interface LaunchAnimationProps {
 }
 
 export const LaunchAnimation: React.FC<LaunchAnimationProps> = ({ onComplete }) => {
+  const [finished, setFinished] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('portfolio_launched') === 'true';
+    }
+    return false;
+  });
   const [mounted, setMounted] = useState(false);
   const [exiting, setExiting] = useState(false);
-  const [finished, setFinished] = useState(false);
 
   const firstName = 'DONTHIREDDY';
   const lastName = 'HARINI';
 
   const handleSkip = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('portfolio_launched', 'true');
+    }
     setExiting(true);
     setTimeout(() => {
       setFinished(true);
@@ -22,6 +30,13 @@ export const LaunchAnimation: React.FC<LaunchAnimationProps> = ({ onComplete }) 
   };
 
   useEffect(() => {
+    // If already launched in this session, immediately complete without rendering
+    if (typeof window !== 'undefined' && sessionStorage.getItem('portfolio_launched') === 'true') {
+      setFinished(true);
+      if (onComplete) onComplete();
+      return;
+    }
+
     // Trigger entrance wave
     const mountTimer = setTimeout(() => {
       setMounted(true);

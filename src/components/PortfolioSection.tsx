@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, ArrowUpRight, Terminal, Sparkles } from 'lucide-react';
 import { PORTFOLIO_DATA, Project } from '../data/portfolioData';
 
-export const PortfolioSection: React.FC = () => {
+interface PortfolioSectionProps {
+  onSelectProject?: (projectId: string) => void;
+}
+
+export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onSelectProject }) => {
   return (
     <section id="projects-section" className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20">
       {/* Section Header */}
@@ -20,7 +24,7 @@ export const PortfolioSection: React.FC = () => {
           Key Projects
         </h2>
         
-        <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           Interactive web applications, algorithm canvas engines, and multimodal AI literature analysis tools built with clean architecture and modern engineering workflows.
         </p>
       </div>
@@ -30,12 +34,12 @@ export const PortfolioSection: React.FC = () => {
         {PORTFOLIO_DATA.projects.map((project: Project) => (
           <article
             key={project.id}
-            className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 bg-black/40 hover:bg-black/55 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full"
+            className="black-glass rounded-3xl p-6 sm:p-7 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-emerald-500/30 flex flex-col justify-between group shadow-2xl h-full"
           >
             <div className="flex flex-col flex-1">
               {/* Responsive 16:9 Image Container with object-contain, object-position center, overflow-hidden, rounded-2xl */}
               {project.imageUrl && (
-                <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 shrink-0 group/img flex items-center justify-center">
+                <div className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-5 shrink-0 group/img flex items-center justify-center">
                   {/* Subtle blurred ambient backdrop to softly fill any pillarbox/letterbox areas if aspect ratio differs from 16:9 */}
                   <img
                     src={project.imageUrl}
@@ -52,17 +56,17 @@ export const PortfolioSection: React.FC = () => {
                     className="featured-image-contain relative z-10 w-full h-full object-contain object-center block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
                   />
                   {/* Subtle dark vignette overlay for depth */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
 
                   {/* Badges on image */}
                   <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
-                    <span className="text-[10px] font-mono text-emerald-300 font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-emerald-500/30">
+                    <span className="text-xs font-mono text-emerald-300 font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-emerald-500/40">
                       {project.category}
                     </span>
                   </div>
                   {project.status && (
                     <div className="absolute top-3 right-3 z-20">
-                      <span className="text-[10px] font-mono text-white/90 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20">
+                      <span className="text-xs font-mono text-white font-medium px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/30">
                         {project.status}
                       </span>
                     </div>
@@ -72,33 +76,37 @@ export const PortfolioSection: React.FC = () => {
 
               {/* Card Meta Row */}
               <div className="flex items-center justify-between gap-3 mb-3">
-                <span className="text-[11px] font-mono text-white/50 px-2 py-0.5 rounded bg-white/5 border border-white/10">
+                <span className="text-xs font-mono text-zinc-200 px-2.5 py-0.5 rounded bg-black/70 border border-white/15 font-medium">
                   {project.period}
                 </span>
-                <span className="text-[11px] font-mono text-emerald-400/90 tracking-wide uppercase">
+                <span className="text-xs font-mono text-emerald-300 font-semibold tracking-wide uppercase">
                   {project.category}
                 </span>
               </div>
 
               {/* Title & Description */}
-              <h3 className="text-xl sm:text-2xl font-medium text-white group-hover:text-emerald-300 transition-colors mb-3 flex items-center justify-between">
+              <h3 
+                onClick={() => onSelectProject && onSelectProject(project.id)}
+                className={`text-2xl sm:text-3xl font-medium text-white group-hover:text-emerald-300 transition-colors mb-3 flex items-center justify-between ${onSelectProject ? 'cursor-pointer' : ''}`}
+                title="Click to view full project details"
+              >
                 <span>{project.title}</span>
-                <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-emerald-400 shrink-0" />
+                <ArrowUpRight size={20} className="opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-emerald-400 shrink-0" />
               </h3>
 
-              <p className="text-sm text-white/75 leading-relaxed mb-5">
+              <p className="text-base text-zinc-100 leading-relaxed mb-5 font-normal">
                 {project.description}
               </p>
 
               {/* Architectural Highlights */}
-              <div className="space-y-1.5 mb-6 bg-white/[0.03] p-3.5 rounded-2xl border border-white/5">
-                <p className="text-[11px] font-mono text-white/50 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                  <Terminal size={12} className="text-emerald-400" />
-                  Key Highlights & Implementation:
+              <div className="space-y-2 mb-6 bg-[#090b10]/90 p-4 sm:p-5 rounded-2xl border border-white/12 shadow-inner">
+                <p className="text-xs sm:text-sm font-mono text-zinc-200 uppercase tracking-wider mb-2.5 flex items-center gap-1.5 font-semibold">
+                  <Terminal size={14} className="text-emerald-400" />
+                  Key Highlights &amp; Implementation:
                 </p>
                 {project.highlights.map((highlight, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs text-white/80 leading-normal">
-                    <span className="text-emerald-400/80 font-mono mt-0.5">•</span>
+                  <div key={idx} className="flex items-start gap-2.5 text-sm text-zinc-100 leading-relaxed">
+                    <span className="text-emerald-400 font-mono mt-0.5 font-bold">•</span>
                     <span>{highlight}</span>
                   </div>
                 ))}
@@ -111,7 +119,7 @@ export const PortfolioSection: React.FC = () => {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/[0.06] text-white/80 border border-white/10"
+                    className="text-xs font-mono px-3 py-1 rounded-md bg-white/[0.08] text-white border border-white/15 font-medium"
                   >
                     {tech}
                   </span>
@@ -124,7 +132,7 @@ export const PortfolioSection: React.FC = () => {
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white/90 hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/15 cursor-pointer"
+                    className="liquid-glass text-xs font-medium px-4 py-2 rounded-full text-white hover:text-white hover:bg-white/15 transition-all flex items-center gap-2 border border-white/20 bg-black/80 cursor-pointer shadow-md"
                   >
                     <Github size={14} />
                     <span>GitHub</span>

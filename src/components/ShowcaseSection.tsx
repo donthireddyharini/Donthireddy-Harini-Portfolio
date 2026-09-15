@@ -32,8 +32,21 @@ const PROJECT_ANCHORS = [
   { id: 'event-management', title: 'Event Management', progress: 1.0 },
 ];
 
-export const ShowcaseSection: React.FC = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+interface ShowcaseSectionProps {
+  onSelectProject?: (projectId: string) => void;
+}
+
+export const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({ onSelectProject }) => {
+  const [internalSelectedId, setInternalSelectedId] = useState<string | null>(null);
+
+  const handleSelect = (id: string) => {
+    if (onSelectProject) {
+      onSelectProject(id);
+    } else {
+      setInternalSelectedId(id);
+    }
+  };
+
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
@@ -209,9 +222,9 @@ export const ShowcaseSection: React.FC = () => {
     scrollToAnchor(target);
   };
 
-  // Selected project modal data
-  const activeProject = ATTACHED_PROJECTS.find(p => p.id === selectedProjectId);
-  const matchingPortfolioProject = PORTFOLIO_DATA.projects.find(p => p.id === selectedProjectId);
+  // Selected project modal data (used only when onSelectProject is not provided)
+  const activeProject = ATTACHED_PROJECTS.find(p => p.id === internalSelectedId);
+  const matchingPortfolioProject = PORTFOLIO_DATA.projects.find(p => p.id === internalSelectedId);
 
   return (
     <section
@@ -225,36 +238,41 @@ export const ShowcaseSection: React.FC = () => {
         className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-3 sm:py-5 z-20"
       >
         
-        {/* Top Minimal Navigation Bar */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shrink-0">
-          <div className="flex items-center justify-between gap-3 pb-2 border-b border-white/10">
-            {/* Left: Section Pill */}
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-mono tracking-widest text-emerald-300 uppercase">
-                Featured Works
-              </span>
+        {/* Top Navigation Bar with Enlarged Featured Works Heading */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shrink-0 pt-2 pb-1">
+          <div className="flex items-center justify-between gap-4 pb-3 border-b border-white/15">
+            {/* Left: Large Section Title & Sub-badge */}
+            <div className="flex items-center gap-3 sm:gap-4">
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_14px_rgba(52,211,153,0.9)] shrink-0" />
+              <div className="flex items-baseline gap-2.5 sm:gap-3.5 flex-wrap">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white drop-shadow-md">
+                  Featured Works
+                </h2>
+                <span className="text-xs sm:text-sm font-mono tracking-widest text-emerald-300 uppercase px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 font-medium hidden sm:inline-block">
+                  Interactive Showcase
+                </span>
+              </div>
             </div>
 
             {/* Right: Quick Stepper Buttons */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={() => handleNudge('prev')}
                 disabled={!canPrev}
-                className="p-1.5 sm:p-2 rounded-full bg-white/5 hover:bg-white/15 disabled:opacity-30 disabled:hover:bg-white/5 text-white/80 hover:text-white transition-all border border-white/10 cursor-pointer disabled:cursor-not-allowed"
+                className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/10 text-white transition-all border border-white/15 cursor-pointer disabled:cursor-not-allowed shadow-md hover:scale-105 active:scale-95"
                 aria-label="Previous project"
                 title="Previous project"
               >
-                <ChevronLeft size={16} />
+                <ChevronLeft size={20} />
               </button>
               <button
                 onClick={() => handleNudge('next')}
                 disabled={!canNext}
-                className="p-1.5 sm:p-2 rounded-full bg-white/5 hover:bg-white/15 disabled:opacity-30 disabled:hover:bg-white/5 text-white/80 hover:text-white transition-all border border-white/10 cursor-pointer disabled:cursor-not-allowed"
+                className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:hover:bg-white/10 text-white transition-all border border-white/15 cursor-pointer disabled:cursor-not-allowed shadow-md hover:scale-105 active:scale-95"
                 aria-label="Next project"
                 title="Next project"
               >
-                <ChevronRight size={16} />
+                <ChevronRight size={20} />
               </button>
             </div>
           </div>
@@ -273,15 +291,15 @@ export const ShowcaseSection: React.FC = () => {
             }}
             className="flex gap-4 sm:gap-6 items-stretch w-max px-4 sm:px-8 py-0.5"
           >
-            <AgroPriceCard onSelect={() => setSelectedProjectId('agro-price')} />
-            <BiteSaverCard onSelect={() => setSelectedProjectId('bitesaver')} />
-            <LitMindCard onSelect={() => setSelectedProjectId('litmind')} />
-            <CpuSchedulerCard onSelect={() => setSelectedProjectId('cpu-scheduler')} />
-            <DsaLegendsCard onSelect={() => setSelectedProjectId('dsa-legends')} />
-            <EventManagementCard onSelect={() => setSelectedProjectId('event-management')} />
+            <AgroPriceCard onSelect={() => handleSelect('agro-price')} />
+            <BiteSaverCard onSelect={() => handleSelect('bitesaver')} />
+            <LitMindCard onSelect={() => handleSelect('litmind')} />
+            <CpuSchedulerCard onSelect={() => handleSelect('cpu-scheduler')} />
+            <DsaLegendsCard onSelect={() => handleSelect('dsa-legends')} />
+            <EventManagementCard onSelect={() => handleSelect('event-management')} />
             {/* Extended loop cards */}
-            <AgroPriceCard onSelect={() => setSelectedProjectId('agro-price')} />
-            <BiteSaverCard onSelect={() => setSelectedProjectId('bitesaver')} />
+            <AgroPriceCard onSelect={() => handleSelect('agro-price')} />
+            <BiteSaverCard onSelect={() => handleSelect('bitesaver')} />
           </div>
 
           {/* Row 2: Slides RIGHT (→) in opposing parallax as you scroll down */}
@@ -292,15 +310,15 @@ export const ShowcaseSection: React.FC = () => {
             }}
             className="flex gap-4 sm:gap-6 items-stretch w-max px-4 sm:px-8 py-0.5"
           >
-            <AgroPriceCard onSelect={() => setSelectedProjectId('agro-price')} />
-            <BiteSaverCard onSelect={() => setSelectedProjectId('bitesaver')} />
-            <LitMindCard onSelect={() => setSelectedProjectId('litmind')} />
-            <CpuSchedulerCard onSelect={() => setSelectedProjectId('cpu-scheduler')} />
-            <DsaLegendsCard onSelect={() => setSelectedProjectId('dsa-legends')} />
-            <EventManagementCard onSelect={() => setSelectedProjectId('event-management')} />
+            <AgroPriceCard onSelect={() => handleSelect('agro-price')} />
+            <BiteSaverCard onSelect={() => handleSelect('bitesaver')} />
+            <LitMindCard onSelect={() => handleSelect('litmind')} />
+            <CpuSchedulerCard onSelect={() => handleSelect('cpu-scheduler')} />
+            <DsaLegendsCard onSelect={() => handleSelect('dsa-legends')} />
+            <EventManagementCard onSelect={() => handleSelect('event-management')} />
             {/* Symmetrical extension */}
-            <CpuSchedulerCard onSelect={() => setSelectedProjectId('cpu-scheduler')} />
-            <DsaLegendsCard onSelect={() => setSelectedProjectId('dsa-legends')} />
+            <CpuSchedulerCard onSelect={() => handleSelect('cpu-scheduler')} />
+            <DsaLegendsCard onSelect={() => handleSelect('dsa-legends')} />
           </div>
         </div>
 
@@ -347,11 +365,11 @@ export const ShowcaseSection: React.FC = () => {
 
       </div>
 
-      {/* High-Resolution Project Details Modal */}
-      {activeProject && (
+      {/* High-Resolution Project Details Modal (fallback only when onSelectProject is not provided) */}
+      {!onSelectProject && activeProject && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-lg animate-fade-in"
-          onClick={() => setSelectedProjectId(null)}
+          onClick={() => setInternalSelectedId(null)}
         >
           <div 
             onClick={(e) => e.stopPropagation()}
@@ -366,7 +384,7 @@ export const ShowcaseSection: React.FC = () => {
                 </span>
               </div>
               <button
-                onClick={() => setSelectedProjectId(null)}
+                onClick={() => setInternalSelectedId(null)}
                 className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
@@ -449,7 +467,7 @@ export const ShowcaseSection: React.FC = () => {
 
               <div className="flex items-center gap-2.5">
                 <button
-                  onClick={() => setSelectedProjectId(null)}
+                  onClick={() => setInternalSelectedId(null)}
                   className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all cursor-pointer"
                 >
                   Close

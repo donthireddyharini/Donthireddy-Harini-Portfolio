@@ -769,21 +769,21 @@ export const TechSymbolBadge: React.FC<TechSymbolBadgeProps> = ({ itemName }) =>
 
   return (
     <div
-      className="relative group inline-flex flex-col items-center justify-center p-1.5 rounded-2xl hover:bg-white/[0.05] transition-all duration-200 cursor-pointer w-[76px] sm:w-[84px] shrink-0"
+      className="relative group flex flex-col items-center justify-center p-2 rounded-2xl hover:bg-white/[0.08] transition-all duration-200 cursor-pointer w-full max-w-[115px] select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       tabIndex={0}
       role="button"
       aria-label={tech.name}
     >
-      {/* Icon Capsule Button */}
+      {/* Icon Capsule Button - Enlarged for High Visibility */}
       <div
-        className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center p-2.5 transition-all duration-300 border select-none active:scale-95"
+        className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center p-3 sm:p-3.5 transition-all duration-300 border select-none active:scale-95"
         style={{
-          backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.14)' : 'rgba(255, 255, 255, 0.05)',
-          borderColor: isHovered ? tech.color : 'rgba(255, 255, 255, 0.12)',
-          boxShadow: isHovered ? `0 0 18px -2px ${tech.bgGlow}` : '0 4px 10px rgba(0, 0, 0, 0.25)',
-          transform: isHovered ? 'translateY(-2px) scale(1.08)' : 'translateY(0) scale(1)',
+          backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.18)' : 'rgba(16, 20, 28, 0.92)',
+          borderColor: isHovered ? tech.color : 'rgba(255, 255, 255, 0.18)',
+          boxShadow: isHovered ? `0 0 20px -2px ${tech.bgGlow}` : '0 4px 12px rgba(0, 0, 0, 0.65)',
+          transform: isHovered ? 'translateY(-3px) scale(1.08)' : 'translateY(0) scale(1)',
         }}
       >
         <div className="w-full h-full flex items-center justify-center">
@@ -791,19 +791,20 @@ export const TechSymbolBadge: React.FC<TechSymbolBadgeProps> = ({ itemName }) =>
         </div>
       </div>
 
-      {/* Automatically scrolling skill name under the symbol (always scrolls, even for short names) */}
+      {/* Automatically scrolling skill name under the symbol */}
       <div
         ref={textContainerRef}
-        className="mt-1.5 w-full overflow-hidden text-center py-0.5 select-none relative"
+        className="mt-2 w-full overflow-hidden text-center py-0.5 select-none relative"
         title={tech.name}
       >
         <span
           ref={textSpanRef}
-          className={`inline-block text-[10px] sm:text-[11px] font-mono tracking-tight leading-tight whitespace-nowrap px-1 transition-colors duration-200 animate-text-scroll ${
-            isHovered ? 'font-semibold text-white' : 'text-white/80 font-normal'
+          className={`inline-block text-[11px] sm:text-xs font-mono tracking-tight leading-tight whitespace-nowrap px-1 transition-colors duration-200 animate-text-scroll ${
+            isHovered ? 'font-bold text-white' : 'text-zinc-200 font-semibold'
           }`}
           style={{
-            color: isHovered ? tech.color : undefined,
+            color: isHovered ? tech.color : '#F4F4F5',
+            textShadow: '0 1px 4px rgba(0, 0, 0, 0.95)',
             '--marquee-distance': `-${scrollDistance}px`,
           } as React.CSSProperties}
         >

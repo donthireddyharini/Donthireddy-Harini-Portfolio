@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 // Universal deployment-safe static asset paths
-const PRIMARY_BACKGROUND_IMAGE = '/background.jpg';
-const FALLBACK_BACKGROUND_IMAGE = '/assets/background.jpg';
+const PRIMARY_BACKGROUND_IMAGE = '/background.png';
+const FALLBACK_BACKGROUND_IMAGE = '/background.jpg';
 
 const PRIMARY_VIDEO_URL = '/background-video.mp4';
 const FALLBACK_VIDEO_URL = '/assets/background-video.mp4';
@@ -93,7 +93,7 @@ export const BackgroundVideo: React.FC = () => {
       className="fixed inset-0 w-full h-full overflow-hidden bg-black select-none pointer-events-none z-0"
       aria-hidden="true"
     >
-      {/* Layer 1: Fallback background image shown while video loads */}
+      {/* Layer 1: Fallback high-resolution background image shown while video loads */}
       <img
         id="portfolio-background-image"
         src={imgSrc}
@@ -103,12 +103,18 @@ export const BackgroundVideo: React.FC = () => {
         fetchPriority="high"
         onLoad={() => setIsImageLoaded(true)}
         onError={handleImageError}
+        style={{
+          filter: 'contrast(1.05) saturate(1.06) brightness(1.02)',
+          imageRendering: 'high-quality',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+        }}
         className={`absolute inset-0 w-full h-full object-cover object-right pointer-events-none z-0 transition-opacity duration-500 ${
           isImageLoaded ? 'opacity-100' : 'opacity-95'
         }`}
       />
 
-      {/* Layer 2: Looping background video */}
+      {/* Layer 2: Looping background video with enhanced clarity & depth */}
       <video
         ref={videoRef}
         muted
@@ -128,6 +134,12 @@ export const BackgroundVideo: React.FC = () => {
           }
         }}
         onError={handleVideoError}
+        style={{
+          filter: 'contrast(1.05) saturate(1.06) brightness(1.02)',
+          imageRendering: 'high-quality',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+        }}
         className={`absolute inset-0 w-full h-full object-cover object-right pointer-events-none z-[1] transition-opacity duration-700 ${
           isVideoPlaying ? 'opacity-100' : 'opacity-0'
         }`}
@@ -136,9 +148,8 @@ export const BackgroundVideo: React.FC = () => {
         <source src={FALLBACK_VIDEO_URL} type="video/mp4" />
       </video>
 
-      {/* Layer 3: Atmospheric overlays for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/30 pointer-events-none z-[2]" />
-      <div className="absolute inset-0 bg-radial from-transparent via-transparent to-black/35 pointer-events-none z-[2]" />
+      {/* Layer 3: Atmospheric clear & bright overlay — keeps background bright, vibrant and clearly visible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30 pointer-events-none z-[2]" />
     </div>
   );
 };

@@ -27,7 +27,7 @@ export const AchievementsSection: React.FC = () => {
         </h2>
 
         {/* Requested Subtitle */}
-        <p className="text-emerald-400 font-mono text-xs sm:text-sm md:text-base tracking-wider uppercase max-w-3xl mx-auto font-medium">
+        <p className="text-emerald-400 font-mono text-sm sm:text-base md:text-lg tracking-wider uppercase max-w-3xl mx-auto font-medium">
           From national level hackathon stage to athletics stadium
         </p>
       </div>
@@ -36,7 +36,7 @@ export const AchievementsSection: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
         
         {/* CARD 1: NATIONAL FINALIST HACKATHON */}
-        <article className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 bg-black/40 hover:bg-black/55 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full">
+        <article className="black-glass rounded-3xl p-6 sm:p-7 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-purple-500/30 flex flex-col justify-between group shadow-2xl h-full">
           <div className="flex flex-col flex-1">
             
             {/* 16:9 Image Preview Frame */}
@@ -48,7 +48,7 @@ export const AchievementsSection: React.FC = () => {
                   imageUrl: '/hackadhyaay-certificate.png',
                 })
               }
-              className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 shrink-0 group/img flex items-center justify-center cursor-pointer"
+              className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-5 shrink-0 group/img flex items-center justify-center cursor-pointer"
             >
               <img
                 src="/hackadhyaay-certificate.png"
@@ -62,17 +62,17 @@ export const AchievementsSection: React.FC = () => {
                 loading="lazy"
                 className="featured-image-contain relative z-10 w-full h-full object-contain object-center block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
 
               {/* Badges on Image */}
               <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
-                <span className="text-[10px] font-mono text-purple-300 font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-purple-500/30 flex items-center gap-1">
-                  <Trophy size={11} className="text-purple-400" />
+                <span className="text-xs font-mono text-purple-300 font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-purple-500/40 flex items-center gap-1">
+                  <Trophy size={12} className="text-purple-400" />
                   NATIONAL FINALIST
                 </span>
               </div>
               <div className="absolute top-3 right-3 z-20">
-                <span className="text-[10px] font-mono text-white/90 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20">
+                <span className="text-xs font-mono text-white font-medium px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/30">
                   Nov &apos;25
                 </span>
               </div>
@@ -80,55 +80,55 @@ export const AchievementsSection: React.FC = () => {
 
             {/* Meta Row: Period & Organizer */}
             <div className="flex items-center justify-between gap-3 mb-3">
-              <span className="text-[11px] font-mono text-white/50 px-2 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                <Calendar size={11} className="text-purple-400" />
+              <span className="text-xs font-mono text-zinc-200 px-2.5 py-0.5 rounded bg-black/70 border border-white/15 flex items-center gap-1 font-medium">
+                <Calendar size={12} className="text-purple-400" />
                 Nov 28–29, 2025
               </span>
-              <span className="text-[11px] font-mono text-purple-300 font-medium tracking-wide uppercase">
+              <span className="text-xs font-mono text-purple-300 font-semibold tracking-wide uppercase">
                 CodIntern &bull; Vibranta
               </span>
             </div>
 
             {/* Title & Organization */}
-            <h3 className="text-xl sm:text-2xl font-medium text-white mb-1.5 flex items-center justify-between">
+            <h3 className="text-2xl sm:text-3xl font-medium text-white mb-1.5 flex items-center justify-between">
               <span>HACK-ADHYAAY National Level Hackathon</span>
-              <Award size={18} className="text-purple-400 shrink-0" />
+              <Award size={20} className="text-purple-400 shrink-0" />
             </h3>
 
-            <p className="text-xs font-mono text-purple-300/80 uppercase tracking-wider mb-4">
+            <p className="text-xs sm:text-sm font-mono text-purple-300/90 uppercase tracking-wider mb-4 font-medium">
               National Finalist &bull; 24-Hour Hackathon &bull; CodIntern &amp; Vibranta
             </p>
 
             {/* Expanded Description & Technical Matter Block */}
-            <div className="bg-white/[0.03] p-4 rounded-2xl border border-white/5 mb-6 flex-1 text-xs text-white/80 leading-relaxed space-y-3">
-              <p className="font-medium text-white/90">
+            <div className="bg-[#090b10]/90 p-4 sm:p-5 rounded-2xl border border-white/12 shadow-inner mb-6 flex-1 text-sm text-zinc-100 leading-relaxed space-y-3">
+              <p className="font-semibold text-white">
                 Certificate of Appreciation for enthusiastic participation, dedication, collaborative spirit, and technical skills during the 24-Hour National Level Hackathon.
               </p>
 
-              <div className="space-y-2 pt-1 border-t border-white/5 text-[11.5px]">
-                <div className="flex items-start gap-2 text-white/80">
+              <div className="space-y-2.5 pt-1 border-t border-white/10 text-xs sm:text-sm">
+                <div className="flex items-start gap-2.5 text-zinc-100">
                   <span className="text-purple-400 font-mono font-bold mt-0.5">&bull;</span>
                   <span>
-                    <strong>National Grand Finalist:</strong> Selected among top competitive engineering teams nationwide across India for the 24-hour intensive sprint organized by CodIntern &amp; Vibranta.
+                    <strong className="text-white">National Grand Finalist:</strong> Selected among top competitive engineering teams nationwide across India for the 24-hour intensive sprint organized by CodIntern &amp; Vibranta.
                   </span>
                 </div>
 
-                <div className="flex items-start gap-2 text-white/80">
+                <div className="flex items-start gap-2.5 text-zinc-100">
                   <span className="text-purple-400 font-mono font-bold mt-0.5">&bull;</span>
                   <span>
-                    <strong>Rapid Full-Stack Prototyping:</strong> Conceptualized, architected, and built a fully functional web application under strict 24-hour sprint deadlines with high-performance UI and clean architecture.
+                    <strong className="text-white">Rapid Full-Stack Prototyping:</strong> Conceptualized, architected, and built a fully functional web application under strict 24-hour sprint deadlines with high-performance UI and clean architecture.
                   </span>
                 </div>
 
-                <div className="flex items-start gap-2 text-white/80">
+                <div className="flex items-start gap-2.5 text-zinc-100">
                   <span className="text-purple-400 font-mono font-bold mt-0.5">&bull;</span>
                   <span>
-                    <strong>Real-Time Problem Solving:</strong> Demonstrated rapid algorithmic debugging, resilient teamwork, agile task distribution, and technical innovation under high-pressure competitive evaluation.
+                    <strong className="text-white">Real-Time Problem Solving:</strong> Demonstrated rapid algorithmic debugging, resilient teamwork, agile task distribution, and technical innovation under high-pressure competitive evaluation.
                   </span>
                 </div>
               </div>
 
-              <p className="text-purple-300/90 text-[11px] font-mono pt-1">
+              <p className="text-purple-300 font-mono text-xs pt-1">
                 Recognized by the judging jury for agile execution, modular code quality, and creative technical implementation.
               </p>
             </div>
@@ -148,7 +148,7 @@ export const AchievementsSection: React.FC = () => {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-200 border border-purple-500/20"
+                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-200 border border-purple-500/30 font-medium"
                 >
                   {skill}
                 </span>
@@ -175,7 +175,7 @@ export const AchievementsSection: React.FC = () => {
         </article>
 
         {/* CARD 2: ATHLETICS & SPORTS EXCELLENCE */}
-        <article className="liquid-glass rounded-3xl p-6 sm:p-7 border border-white/15 bg-black/40 hover:bg-black/55 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full">
+        <article className="black-glass rounded-3xl p-6 sm:p-7 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-amber-500/30 flex flex-col justify-between group shadow-2xl h-full">
           <div className="flex flex-col flex-1">
             
             {/* 16:9 Image Preview Frame */}
@@ -187,7 +187,7 @@ export const AchievementsSection: React.FC = () => {
                   imageUrl: '/athletics-excellence.jpg',
                 })
               }
-              className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 shrink-0 group/img flex items-center justify-center cursor-pointer"
+              className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-5 shrink-0 group/img flex items-center justify-center cursor-pointer"
             >
               <img
                 src="/athletics-excellence.jpg"
@@ -201,17 +201,17 @@ export const AchievementsSection: React.FC = () => {
                 loading="lazy"
                 className="featured-image-contain relative z-10 w-full h-full object-contain object-center block group-hover:scale-[1.02] transition-transform duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10" />
 
               {/* Badges on Image */}
               <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
-                <span className="text-[10px] font-mono text-amber-300 font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-amber-500/30 flex items-center gap-1">
-                  <Medal size={11} className="text-amber-400" />
+                <span className="text-xs font-mono text-amber-300 font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 flex items-center gap-1">
+                  <Medal size={12} className="text-amber-400" />
                   9 CERTIFICATES OF MERIT
                 </span>
               </div>
               <div className="absolute top-3 right-3 z-20">
-                <span className="text-[10px] font-mono text-white/90 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20">
+                <span className="text-xs font-mono text-white font-medium px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/30">
                   State Level
                 </span>
               </div>
@@ -219,68 +219,68 @@ export const AchievementsSection: React.FC = () => {
 
             {/* Meta Row: Role & Discipline */}
             <div className="flex items-center justify-between gap-3 mb-3">
-              <span className="text-[11px] font-mono text-white/50 px-2 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1">
-                <Calendar size={11} className="text-amber-400" />
+              <span className="text-xs font-mono text-zinc-200 px-2.5 py-0.5 rounded bg-black/70 border border-white/15 flex items-center gap-1 font-medium">
+                <Calendar size={12} className="text-amber-400" />
                 2023–24 &bull; 2024–25 &bull; 2026
               </span>
-              <span className="text-[11px] font-mono text-amber-300 font-medium tracking-wide uppercase">
+              <span className="text-xs font-mono text-amber-300 font-semibold tracking-wide uppercase">
                 Competitive Athlete
               </span>
             </div>
 
             {/* Title & Organization */}
-            <h3 className="text-xl sm:text-2xl font-medium text-white mb-1.5 flex items-center justify-between">
+            <h3 className="text-2xl sm:text-3xl font-medium text-white mb-1.5 flex items-center justify-between">
               <span>Athletics &amp; Sports Excellence</span>
-              <Flame size={18} className="text-amber-400 shrink-0" />
+              <Flame size={20} className="text-amber-400 shrink-0" />
             </h3>
 
-            <p className="text-xs font-mono text-amber-300/80 uppercase tracking-wider mb-4">
+            <p className="text-xs sm:text-sm font-mono text-amber-300/90 uppercase tracking-wider mb-4 font-medium">
               Sprinting &bull; Relay &bull; Long Jump &bull; AIU Athletics
             </p>
 
             {/* Prominently Highlighted Distinction Banner */}
-            <div className="mb-4 p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/25 via-amber-500/15 to-amber-500/5 border border-amber-400/40 flex items-center gap-3 shadow-lg shadow-amber-500/10">
-              <div className="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 border border-amber-400/50">
-                <Trophy size={16} className="text-amber-300" />
+            <div className="mb-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-amber-500/5 border border-amber-400/40 flex items-center gap-3.5 shadow-lg shadow-amber-500/10">
+              <div className="w-9 h-9 rounded-full bg-amber-400/20 flex items-center justify-center shrink-0 border border-amber-400/50">
+                <Trophy size={18} className="text-amber-300" />
               </div>
               <div>
-                <span className="text-[10px] font-mono tracking-wider uppercase text-amber-400 font-bold block">
+                <span className="text-xs font-mono tracking-wider uppercase text-amber-400 font-bold block">
                   State Level Athlete
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-white tracking-wide">
+                <span className="text-sm sm:text-base font-bold text-white tracking-wide">
                   Best Athlete and Individual Champion in State-Level
                 </span>
               </div>
             </div>
 
             {/* Structured Metric Highlights Block */}
-            <div className="bg-white/[0.03] p-4 rounded-2xl border border-white/5 mb-6 flex-1 space-y-2.5 text-xs text-white/80 leading-relaxed">
-              <div className="flex items-center gap-2 text-amber-300 font-semibold">
-                <Trophy size={14} className="shrink-0 text-amber-400" />
+            <div className="bg-[#090b10]/90 p-4 sm:p-5 rounded-2xl border border-white/12 shadow-inner mb-6 flex-1 space-y-3 text-sm text-zinc-100 leading-relaxed">
+              <div className="flex items-center gap-2 text-amber-300 font-semibold text-sm sm:text-base">
+                <Trophy size={16} className="shrink-0 text-amber-400" />
                 <span>9 Certificates of Merit &bull; Multiple 1st-Place Finishes</span>
               </div>
 
-              <div className="flex items-center gap-2 text-white/85">
-                <span className="text-emerald-400 font-mono font-bold">&bull;</span>
+              <div className="flex items-center gap-2.5 text-zinc-100">
+                <span className="text-emerald-400 font-mono font-bold">•</span>
                 <span>Events: 100m • 200m • 4×100m Relay • Long Jump</span>
               </div>
 
-              <div className="flex items-start gap-2 text-white/75">
-                <MapPin size={13} className="text-amber-400 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-zinc-200">
+                <MapPin size={14} className="text-amber-400 shrink-0 mt-0.5" />
                 <span>Regional &amp; State Level — IPSGSM 2023–24 &amp; 2024–25</span>
               </div>
 
-              <div className="flex items-start gap-2 text-white/75">
-                <Landmark size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-zinc-200">
+                <Landmark size={14} className="text-emerald-400 shrink-0 mt-0.5" />
                 <span>Government of Andhra Pradesh — Department of Technical Education</span>
               </div>
 
-              <div className="flex items-start gap-2 text-white/75 pt-1 border-t border-white/5">
-                <span className="text-emerald-400 font-mono font-bold">&bull;</span>
+              <div className="flex items-start gap-2.5 text-zinc-200 pt-1.5 border-t border-white/10">
+                <span className="text-emerald-400 font-mono font-bold">•</span>
                 <span>AIU Athletics Participant, LPU — Represented LPU in All India Inter-University athletics, competing at the university level (Jan 2026).</span>
               </div>
 
-              <div className="text-[11px] font-mono text-amber-200/90 pt-1">
+              <div className="text-xs sm:text-sm font-mono text-amber-200 pt-1 font-medium">
                 Built through <strong className="text-white">discipline, consistency, competitive spirit, and resilience.</strong>
               </div>
             </div>
@@ -293,7 +293,7 @@ export const AchievementsSection: React.FC = () => {
               {['Discipline', 'Consistency', 'Competitive Spirit', 'Resilience', 'High Performance'].map((val) => (
                 <span
                   key={val}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-200 border border-amber-500/20"
+                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-200 border border-amber-500/30 font-medium"
                 >
                   {val}
                 </span>

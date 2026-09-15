@@ -223,7 +223,7 @@ export const CertificatesSection: React.FC = () => {
           Certificates
         </h2>
 
-        <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           Official credentials and industry diplomas across generative AI, relational databases, data structures, algorithms, hackathons, and software engineering.
         </p>
 
@@ -258,13 +258,13 @@ export const CertificatesSection: React.FC = () => {
         {filteredCertificates.map((cert) => (
           <article
             key={cert.id}
-            className="liquid-glass rounded-3xl p-5 sm:p-6 border border-white/15 bg-black/40 hover:bg-black/60 backdrop-blur-xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-xl h-full"
+            className="black-glass rounded-3xl p-5 sm:p-6 border border-white/20 bg-black/85 hover:bg-black/95 backdrop-blur-2xl transition-all duration-300 hover:border-white/30 flex flex-col justify-between group shadow-2xl h-full"
           >
             <div className="flex flex-col flex-1">
               {/* 16:9 Image Preview Frame */}
               <div
                 onClick={() => setSelectedCert(cert)}
-                className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/70 border border-white/10 mb-4 shrink-0 group/img flex items-center justify-center cursor-pointer"
+                className="featured-image-wrapper relative w-full aspect-video rounded-2xl overflow-hidden bg-black/80 border border-white/15 mb-4 shrink-0 group/img flex items-center justify-center cursor-pointer"
               >
                 <img
                   src={cert.imageUrl}
@@ -283,7 +283,7 @@ export const CertificatesSection: React.FC = () => {
                 {/* Badge Overlay */}
                 <div className="absolute top-2.5 left-2.5 z-20">
                   <span
-                    className={`text-[10px] font-mono font-medium tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border ${cert.colorScheme.border} ${cert.colorScheme.badgeText} flex items-center gap-1`}
+                    className={`text-[10px] font-mono font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border ${cert.colorScheme.border} ${cert.colorScheme.badgeText} flex items-center gap-1`}
                   >
                     <CheckCircle2 size={10} className={cert.colorScheme.accent} />
                     {cert.badge}
@@ -293,30 +293,30 @@ export const CertificatesSection: React.FC = () => {
 
               {/* Issuer & Period */}
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-[11px] font-mono text-white/50 flex items-center gap-1 truncate">
-                  <Calendar size={11} className={cert.colorScheme.accent} />
+                <span className="text-xs font-mono text-zinc-200 flex items-center gap-1.5 truncate font-medium">
+                  <Calendar size={12} className={cert.colorScheme.accent} />
                   {cert.issueDate}
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="text-lg font-semibold text-white mb-1.5 leading-snug group-hover:text-emerald-300 transition-colors">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-1.5 leading-snug group-hover:text-emerald-300 transition-colors">
                 {cert.title}
               </h3>
 
               {/* Organization */}
-              <p className="text-xs font-mono text-white/60 mb-3 flex items-center gap-1.5">
-                <Building2 size={12} className="shrink-0 opacity-70" />
+              <p className="text-xs sm:text-sm font-mono text-zinc-300 mb-3 flex items-center gap-1.5 font-medium">
+                <Building2 size={13} className="shrink-0 opacity-80" />
                 <span>{cert.issuer}</span>
               </p>
 
               {/* Description */}
-              <p className="text-xs text-white/75 leading-relaxed mb-4 bg-white/[0.02] p-3 rounded-xl border border-white/5 flex-1">
+              <p className="text-sm text-zinc-100 leading-relaxed mb-4 bg-[#090b10]/90 p-3.5 sm:p-4 rounded-xl border border-white/12 shadow-inner flex-1 font-normal">
                 {cert.description}
               </p>
 
               {cert.credentialId && (
-                <div className="text-[10px] font-mono text-white/50 mb-3 truncate">
+                <div className="text-xs font-mono text-zinc-400 mb-3 truncate">
                   {cert.credentialId}
                 </div>
               )}
@@ -328,7 +328,7 @@ export const CertificatesSection: React.FC = () => {
                 {cert.skills.slice(0, 4).map((skill) => (
                   <span
                     key={skill}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-white/80 border border-white/10"
+                    className="text-xs font-mono px-2.5 py-0.5 rounded bg-white/[0.08] text-white border border-white/15 font-medium"
                   >
                     {skill}
                   </span>
@@ -338,9 +338,9 @@ export const CertificatesSection: React.FC = () => {
               <div className="flex items-center gap-2 pt-3 border-t border-white/10">
                 <button
                   onClick={() => setSelectedCert(cert)}
-                  className="flex-1 bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-medium py-2 rounded-full active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/15"
+                  className="flex-1 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-mono font-medium py-2 rounded-full active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/20 shadow-md"
                 >
-                  <Award size={13} className={cert.colorScheme.accent} />
+                  <Award size={14} className={cert.colorScheme.accent} />
                   <span>View Certificate</span>
                 </button>
 

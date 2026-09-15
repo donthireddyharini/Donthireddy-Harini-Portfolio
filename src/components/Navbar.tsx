@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
 
   return (
     <nav className="relative z-30 pl-4 sm:pl-6 pr-4 sm:pr-6 py-4 sm:py-6 w-full">
-      <div className="liquid-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between max-w-5xl mx-auto border border-white/15 bg-black/40 backdrop-blur-2xl shadow-2xl">
+      <div className="black-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between max-w-5xl mx-auto border border-white/20 bg-black/85 backdrop-blur-2xl shadow-2xl">
         {/* Brand Logo: "DH" Monogram Symbol */}
         <button
           id="navbar-brand-logo"
@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollTo, activeSection }) => 
               className={`text-xs sm:text-sm font-medium px-2.5 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer focus:outline-none ${
                 activeSection === item.id && item.id !== 'hero-section'
                   ? 'bg-white text-black font-semibold shadow-md'
-                  : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : 'text-zinc-200 hover:text-white hover:bg-white/15'
               }`}
             >
               {item.label}
